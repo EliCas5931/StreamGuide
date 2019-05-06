@@ -1,6 +1,7 @@
 // general guidebox js from project 1 & 2. Will tweak for what I need
 var guideKey = "";
 
+//This will display where title is located via subscription such as Netflix or Hulu
 function subFunc(subResults) {
     var subText = document.createElement("p");
     subtText.setAttribute("id", "subText");
@@ -28,6 +29,26 @@ function subFunc(subResults) {
     }
 }
 
+//This will display where title can be purchased from such as iTunes or Google Pay
 function purcFunc (subResults) {
-    
+    var purcText = document.createElement("p");
+    purcText.setAttribute("id", "purcText");
+
+    var purcP = document.createTextNode("Purchase: ");
+    purcText.appendChild(purcP);
+    document.getElementById("purchase").appendChild(purcText);
+    for (j = 0; j < subResults.results[0].purchase_web_sources.length; j++) {
+        console.log(subResults.results[0].purchase_web_sources[j].link);
+
+        var purcBtn = document.createElement("a");
+        purcBtn.setAttribute("href", subResults.results[0].purchase_web_sources[j].link);
+        purcBtn.setAttribute("target", "_blank");
+        purcBtn.setAttribute("class", "button");
+        purcBtn.setAttribute("id", "purchaseButton");
+
+        console.log(purcBtn);
+        var textPurcBtn = document.createTextNode(subResults.results[0].purchase_web_sources.display_name);
+        purcBtn.appendChild(textPurcBtn);
+        document.getElementById("purcResults").appendChild(purcBtn);
+    }
 }
