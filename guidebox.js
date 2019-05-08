@@ -52,3 +52,27 @@ function purcFunc (subResults) {
         document.getElementById("purcResults").appendChild(purcBtn);
     }
 }
+
+function freeFunc(subResults) {
+    var freeText = document.createElement("p");
+    freeFunc.Text.setAttribute("id", "freeText");
+
+    var freeP = document.createTextNode("Free to Watch: ");
+    freeText.appendChild(freeP);
+    document.getElementById("free").appendChild(freeText);
+    for (k = 0; k < subResults.results[0].free_web_sources.length; k++) {
+        console.log(subResults.results[0].free_web_sources[k].link);
+
+        //Div for each source
+        var freeBtn = document.createElement("a");
+        freeBtn.setAttribute("href", subResults.results[0].free_web_sources[k].link);
+        freeBtn.setAttribute("target", "_blank");
+        freeBtn.setAttribute("class", "button");
+        freeBtn.setAttribute("id", "freeButton");
+
+        console.log(freeBtn);
+        var textFreeBtn = document. createTextNode(subResults.results[0].free_web_sources[k].display_name);
+        freeBtn.appendChild(textFreeBtn);
+        document.getElementById("freeResults").appendChild(freeBtn);
+    }
+}
