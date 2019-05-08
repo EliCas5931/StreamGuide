@@ -76,3 +76,26 @@ function freeFunc(subResults) {
         document.getElementById("freeResults").appendChild(freeBtn);
     }
 }
+
+function everyFunc(subResults) {
+    var everyText = document.createElement("p");
+    everyText.setAttribute("id", "everyText");
+
+    var everyP = document.createTextNode("TV Everywhere: ");
+    everyText.appendChild(everyP);
+    document.getElementById("tvEverywhere").appendChild(everyText);
+    for (l = 0; l < subResults.results[0].tv_everywhere_web_sources.length; l++) {
+        console.log(subResults.results[0].tv_everywhere_web_sources[l].link);
+
+        var everyBtn = document.createElement("a");
+        everyBtn.setAttribute("href", subResults.results[0].tv_everywhere_web_sources[l].link);
+        everyBtn.setAttribute("target", "_blank");
+        everyBtn.setAttribute("class", "button");
+        everyBtn.setAttribute("id", "everyButton");
+
+        console.log(everyBtn);
+        var textEveryBtn = document.createTextNode(subResults.results[0].tv_everywhere_web_sources[l],display_name);
+        everyBtn.appendChild(textEveryBtn);
+        document.getElementById("everyResults").appendChild(everyBtn);
+    }
+}
