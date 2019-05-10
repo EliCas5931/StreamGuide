@@ -99,3 +99,30 @@ function everyFunc(subResults) {
         document.getElementById("everyResults").appendChild(everyBtn);
     }
 }
+
+// Begin the movie functions for sub, free, every and purc
+function movieSub(subResults) {
+    var movSubText = document.createElement("p");
+    movSubText.setAttribute("id", "movSubText");
+
+    var movSubTextP = document.createTextNode("Subscription: ");
+    movSubText.appendChild(movSubTextP);
+    document.getElementById("subscription").appendChild(movSubText);
+
+    console.log("movie subs");
+    for (i = 0; i < subResults.subscription_web_sources.length; i++) {
+        console.log(subResults.subscription_web_sources[i].link);
+
+        var movSubBtn = document.createElement("a");
+
+        movSubBtn.setAttribute("href", subResults.subscription_web_sources[i].link);
+        movSubBtn.setAttribute("target", "_blank");
+        movSubBtn.setAttribute("class", "button");
+        movSubBtn.setAttribute("id", "movSubBtn");
+
+        console.log(movSubBtn);
+        var textMovSubBtn = document.createTextNode(subResults.subscription_web_sources[i].display_name);
+        movSubBtn.appendChild(textMovSubBtn);
+        document.getElementById("subResults").appendChild(movSubBtn);
+    }
+}
