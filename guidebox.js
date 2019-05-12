@@ -126,3 +126,29 @@ function movieSub(subResults) {
         document.getElementById("subResults").appendChild(movSubBtn);
     }
 }
+
+function movieFree(subresults) {
+    var movFreeText = document.createElement("p");
+    movFreeText.setAttribute("id", "movFreeText");
+
+    var movFreeTextP = document.createTextNode("Free to Watch: ");
+    movFreeText.appendChild(movFreeTextP);
+    document.getElementById("free").appendChild(movFreeText);
+
+    console.log("movie free");
+    for (j = 0; j < subResults.free_web_sources.length; j++) {
+        console.log(subResults.free_web_sources[j].link);
+
+        var movFreeBtn = document.createElement("a");
+
+        movFreeBtn.setAttribute("href", subresults.free_web_sources[j].link);
+        movFreeBtn.setAttribute("target", "_blank");
+        movFreeBtn.setAttribute("class", "button");
+        movFreeBtn.setAttribute("id", "movFreeBtn");
+
+        console.log(movFreeBtn);
+        var textMovFreeBtn = document.createTextNode(subresults.free_web_sources[j].display_name);
+        movFreeBtn.appendChild(textMovFreeBtn);
+        document.getElementById("freeResults").appendChild(movFreeBtn);
+    }
+}
