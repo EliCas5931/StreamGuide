@@ -152,3 +152,26 @@ function movieFree(subresults) {
         document.getElementById("freeResults").appendChild(movFreeBtn);
     }
 }
+
+function moviePurc(subResults) {
+    var movPurcText = document.createElement("p");
+    movPurcText.setAttribute("id", "movPurcText");
+
+    var movPurcP = document.createTextNode("Purchase: ");
+    movPurcText.appendChild(movPurcP);
+    document.getElementById("purchase").appendChild(movPurcText);
+    for (k = 0; k < subResults.purchase_web_sources.length; k++) {
+        console.log(subResults.purchase_web_sources[k].link);
+
+        var movPurcBtn = document.createElement("a");
+        movPurcBtn.setAttribute("href", subResults.purchase_web_sources[k].link);
+        movPurcBtn.setAttribute("target", "_blank");
+        movPurcBtn.setAttribute("class", "button");
+        movPurcBtn.setAttribute("id", "movPurcBtn");
+
+        console.log(movPurcBtn);
+        var textMovPurcBtn = document.createTextNode(subResults.purchase_web_sources[k].display_name);
+        movPurcBtn.appendChild(textMovPurcBtn);
+        document.getElementById("purcResults").appendChild(movPurcBtn);
+    }
+}
