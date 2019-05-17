@@ -175,3 +175,25 @@ function moviePurc(subResults) {
         document.getElementById("purcResults").appendChild(movPurcBtn);
     }
 }
+
+function movieEvery(subResults) {
+    var movEveryText = document.createElement("p");
+    movEveryText.setAttribute("id", "movEveryText");
+
+    var movEveryP = document.createTextNode("TV Everywhere: ");
+    movEveryText.appendChild(movEveryP);
+    document.getElementById("tvEverywhere").appendChild(movEveryText);
+    for (l = 0; l <subResults.tv_everywhere_web_sources.length; l++) {
+        console.log(subResults.tv_everywhere_web_sources[l].link);
+
+        var movEveryBtn = document.createElement("a");
+        movEveryBtn.setAttribute("href", subResults.tv_everywhere_web_sources[l].link);
+        movEveryBtn.setAttribute("target", "_blank");
+        movEveryBtn.setAttribute("class", "button");
+        movEveryBtn.setAttribute("id", "movEveryBtn");
+
+        console.log(movEveryBtn);
+        var textMovEveryBtn = document.createTextNode(subResults.tv_everywhere_web_sources[l].display_name);
+        movEveryBtn.appendChild(textMovEveryBtn);
+        document.getElementById("everyResults").appendChild(movEveryBtn);
+}
