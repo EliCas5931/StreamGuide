@@ -196,4 +196,35 @@ function movieEvery(subResults) {
         var textMovEveryBtn = document.createTextNode(subResults.tv_everywhere_web_sources[l].display_name);
         movEveryBtn.appendChild(textMovEveryBtn);
         document.getElementById("everyResults").appendChild(movEveryBtn);
+    }
+}
+
+function guideShow(search) {
+    var showURL = "https://api-public.guidebox.com/v2/search?api_key" + guideKey + "&type=show&query=" + search;
+
+    $.ajax({
+        url: showURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log("This is the show response");
+        console.log(response);
+        console.log(response.results[0].id);
+        var showID = response.results[0].id;
+
+        var responseShow = "https://api-public.guidebox.com/v2/shows/" + showID + "/episodes?api_key=" + guideKey + "&sources=subscription,purchase,free,tv_everywhere&include_links=true";
+
+        $.ajax({
+            url: responseShow,
+            method: "GET"
+        }).then(function (results) {
+            console.log("These are my show results string");
+            console.log(results);
+
+            $("#loading").hide();
+            subFunc(results);
+            purcFunc(results);
+            freeFunc(results);
+            everyFunc(results);
+        })
+    })
 }
